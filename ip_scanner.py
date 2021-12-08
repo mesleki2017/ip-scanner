@@ -11,12 +11,11 @@ print(platform.system().lower())
 #### kodun calistigi bilgisayarin ipsini almak ##############
 aa=[(s.connect(("8.8.8.8", 53)), s.getsockname()[0], s.close()) for s in [socket.socket(socket.AF_INET, socket.SOCK_DGRAM)]]
 aa1=aa[0][1]
-print(aa1)
 ###############################################################
 iptaban=aa1.split(".")
 ###############################################################
 myThreadList = []
-ipliste=[]
+iplist=[]
 ###############################################################
 def b1(a1,a2):
 	iptaban=aa1.split(".")
@@ -32,31 +31,36 @@ def b1(a1,a2):
 		comand=['ping ',"-f",'-w','1','-n','1',host]
 		if subprocess.call(comand,shell = False,stdout=PIPE) == 0 :
 			#print("bulunan ip = "+host)
-			ipliste.append(host)
+			iplist.append(host)
 
 
 #https://stackoverflow.com/questions/11968689/python-multithreading-wait-till-all-threads-finished
 
 
 
-for aaa in range(0,255,10):
-	#print("t"+str(aaa)+"  :"+str(aaa)+","+str(aaa+10))
-	myThread=threading.Thread(target=b1,args=(str(aaa),str(aaa+10)))
-	myThreadList.append(myThread)
+def ip_scan(ip_begin,ip_end):
+    if platform.system().lower()!="windows":
+        return "op system must be windows"
+    if ip_end > 256:
+        return "ip_end must be maximum 256"
 
-for x in myThreadList:
-     x.start()
+    for aaa in range(ip_begin,ip_end,10):
+        myThread=threading.Thread(target=b1,args=(str(aaa),str(aaa+10)))
+        myThreadList.append(myThread)
 
-for x in myThreadList:
-	x.join()
+    for x in myThreadList:
+        x.start()
+
+    for x in myThreadList:
+        x.join()
 
 
-def list_sort(xxx):
-	fff=xxx.split(".")
-	return int(fff[3])
-#https://www.w3schools.com/python/ref_list_sort.asp	
-ipliste.sort(key=list_sort)
+    def list_sort(xxx):
+        fff=xxx.split(".")
+        return int(fff[3])
+    #https://www.w3schools.com/python/ref_list_sort.asp	
+    iplist.sort(key=list_sort)
+    return iplist
 
-print(len(ipliste))
-for xxx in ipliste:
-	print(xxx)
+
+
