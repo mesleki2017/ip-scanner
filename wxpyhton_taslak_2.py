@@ -17,14 +17,14 @@ class MyFrame2 ( wx.Frame ):
 		
 		
 		##########################################################################################################################
-		self.m_staticText2 = wx.StaticText( self, wx.ID_ANY, u"Başlangıç Ip Adresi", wx.DefaultPosition, wx.DefaultSize, 0|wx.DOUBLE_BORDER )
+		self.m_staticText2 = wx.StaticText( self, wx.ID_ANY, u"IP Range : ", wx.DefaultPosition, wx.DefaultSize, 0|wx.DOUBLE_BORDER )
 		self.m_staticText2.Wrap( -1 )
 		gbSizer2.Add( self.m_staticText2, wx.GBPosition( 0, 0 ), wx.GBSpan( 1, 1 ), wx.ALL, 5 )
 		
 		self.m_textCtrl2 = wx.TextCtrl( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 200,-1 ), 0 )
 		gbSizer2.Add( self.m_textCtrl2, wx.GBPosition( 1, 0 ), wx.GBSpan( 1, 1 ), wx.ALIGN_CENTER|wx.ALL|wx.EXPAND, 5 )
 		######################################################################################################################
-		self.m_staticText3 = wx.StaticText( self, wx.ID_ANY, u"Son Ip Adres", wx.DefaultPosition, wx.DefaultSize, 0|wx.DOUBLE_BORDER )
+		self.m_staticText3 = wx.StaticText( self, wx.ID_ANY, u" to ", wx.DefaultPosition, wx.DefaultSize, 0|wx.DOUBLE_BORDER )
 		self.m_staticText3.Wrap( -1 )
 		gbSizer2.Add( self.m_staticText3, wx.GBPosition( 0, 1 ), wx.GBSpan( 1, 1 ), wx.ALL, 5 )
 		
