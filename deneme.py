@@ -1,3 +1,9 @@
-from ip_scanner import ip_scan
+import ip_scanner 
+from ip_scanner1 import ip_scan as ipscan11
 
-print(ip_scan(140,250))
+#print(ipscan11(140,160))
+print("---------------------------------")
+
+aaa= ip_scanner.scan()
+ffff=aaa.ip_scan(140,160)
+print(ffff)

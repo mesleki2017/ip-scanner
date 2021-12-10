@@ -1,7 +1,7 @@
 
 import wxpyhton_taslak_2
 import wx 
-import ip_scanner 
+import ip_scanner1 
 import socket
 
 
@@ -11,10 +11,9 @@ aa1=aa[0][1]
 ###############################################################
 iptaban=aa1.split(".")
 
-class araYuzDeneme(wxpyhton_taslak_2.MyFrame2,ip_scanner.scan):
+class araYuzDeneme(wxpyhton_taslak_2.MyFrame2):
 	def __init__(self,parent):
 		wxpyhton_taslak_2.MyFrame2.__init__(self,parent)
-		ip_scanner.scan.__init__(self)
 		self.baslangic_ip_Txt=iptaban[0]+"."+iptaban[1]+"."+iptaban[2]+"."+"0"
 		self.son_ip_Txt=iptaban[0]+"."+iptaban[1]+"."+iptaban[2]+"."+"255"
 		self.m_textCtrl2.SetLabel(self.baslangic_ip_Txt)
@@ -24,15 +23,17 @@ class araYuzDeneme(wxpyhton_taslak_2.MyFrame2,ip_scanner.scan):
 
 
 	def portTara(self,event):
-		self.m_button2.SetLabel("Scanning")
+		ip_scanner1.iplist=[]
+		self.m_grid3.DeleteRows(0,self.m_grid3.GetNumberRows(),True)
 		
+		self.m_button2.SetLabel("Scanning")
+
 		c1=self.baslangic_ip_Txt.split(".")
 		c2=int(c1[3])
 		d1=self.son_ip_Txt.split(".")
 		d2=int(d1[3])
-		print(c2,d2)
-		
-		aaa = self.ip_scan(c2,d2)
+
+		aaa = ip_scanner1.ip_scan(c2,d2)
 
 		if len(aaa)!=0:
 			self.m_grid3.AppendRows(len(aaa))
@@ -65,13 +66,16 @@ class araYuzDeneme(wxpyhton_taslak_2.MyFrame2,ip_scanner.scan):
 
 
 
-app = wx.App(False) 
-frame = araYuzDeneme(None)
-
-frame.Show(True) 
-#start the applications 
-app.MainLoop() 
 
 #https://stackoverflow.com/questions/2269827/how-to-convert-an-int-to-a-hex-string
 
 # direkt cmd deki komutu simule ediyor C:\Windows\system32>ping -n 1  -w 300 172.16.215.146
+def main():
+	app = wx.App(False) 
+	frame = araYuzDeneme(None)
+	frame.Show(True) 
+	app.MainLoop() 
+#start the applications 
+
+if __name__ == '__main__':
+    main()
