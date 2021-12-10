@@ -1,7 +1,7 @@
 
 import wxpyhton_taslak_2
 import wx 
-import ip_scanner1 
+import ip_scanner
 import socket
 
 
@@ -23,7 +23,7 @@ class araYuzDeneme(wxpyhton_taslak_2.MyFrame2):
 
 
 	def portTara(self,event):
-		ip_scanner1.iplist=[]
+		ip_scanner.iplist=[]
 		self.m_grid3.DeleteRows(0,self.m_grid3.GetNumberRows(),True)
 		
 		self.m_button2.SetLabel("Scanning")
@@ -33,7 +33,7 @@ class araYuzDeneme(wxpyhton_taslak_2.MyFrame2):
 		d1=self.son_ip_Txt.split(".")
 		d2=int(d1[3])
 
-		aaa = ip_scanner1.ip_scan(c2,d2)
+		aaa = ip_scanner.ip_scan(c2,d2)
 
 		if len(aaa)!=0:
 			self.m_grid3.AppendRows(len(aaa))
