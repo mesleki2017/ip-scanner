@@ -3,6 +3,8 @@ import wxpyhton_taslak_2
 import wx 
 import ip_scanner
 import socket
+import locale
+locale.setlocale(locale.LC_ALL, '')
 
 
 

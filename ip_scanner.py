@@ -35,7 +35,7 @@ def b1(a1,a2):
 		#comand1=['ping ','-n','1','-w','1',host]
 		#print(host)
 		comand=['ping ',"-f",'-w','1','-n','1',host]
-		if subprocess.call(comand,shell = False,stdout=PIPE) == 0 :
+		if subprocess.call(comand,shell = False, stdout=PIPE,stderr=PIPE, stdin=PIPE) == 0 :
 			#print("bulunan ip = "+host)
 			iplist.append(host)
 
